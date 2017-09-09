@@ -4,10 +4,10 @@ class VisitsController < ApplicationController
   # GET /visits
   # GET /visits.json
   def index
+    @visit = Visit.create(ip: request.remote_ip.to_s,
+                       country: Geocoder.search(request.remote_ip.to_s).first.country,
+                       client: request.env["HTTP_USER_AGENT"])
     @visits = Visit.all
-    @ip = request.remote_ip
-    @country = Geocoder.search('213.180.204.26').first.country
-    @client = request.env["HTTP_USER_AGENT"]
   end
 
   # GET /visits/new

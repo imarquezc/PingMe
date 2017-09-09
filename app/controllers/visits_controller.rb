@@ -7,7 +7,7 @@ class VisitsController < ApplicationController
     @visit = Visit.create(ip: request.remote_ip.to_s,
                        country: Geocoder.search(request.remote_ip.to_s).first.country,
                        client: request.env["HTTP_USER_AGENT"])
-    @visits = Visit.all
+    @visits = Visit.order('created_at DESC').limit(10)
   end
 
   # GET /visits/new

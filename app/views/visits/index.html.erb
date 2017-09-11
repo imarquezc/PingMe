@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Ip</th>
+      <th>Date-Time</th>
       <th colspan="2"></th>
       <th>Client</th>
     </tr>
@@ -15,6 +16,7 @@
     <% @visits.each do |visit| %>
       <tr>
         <td><%= visit.ip %></td>
+        <td><%= visit.created_at %></td>
         <td colspan="2"></td>
         <td><%= visit.client %></td>
       </tr>

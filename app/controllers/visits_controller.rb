@@ -5,7 +5,7 @@ class VisitsController < ApplicationController
   # GET /visits.json
   def index
     @visit = Visit.create(ip: request.remote_ip.to_s,
-                       country: Geocoder.search(request.remote_ip.to_s).first.country,
+                       country: 'none',
                        client: request.env["HTTP_USER_AGENT"])
     @visits = Visit.order('created_at DESC').limit(10)
   end
